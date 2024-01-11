@@ -62,13 +62,22 @@ def create_fleet(ai_settings, screen, aliens):
     # Cria um alienígena e calcula o número de alienígenas em uma linha
     # O espaçamento entre os alienígenas é igual a largura de um alienígenas
     alien = Alien(ai_settings, screen)
-    alien_width = alien.rect.width
-    available_space_x = ai_settings.screen_width - 2 * alien_width
-    number_aliens_x = int(available_space_x/ (2 * alien_width))
+    number_aliens_x = get_number_aliens_x(ai_settings, alien.rect.width)
+    
     # Cria a primeira linha de alienígenas 
     for alien_number in range(number_aliens_x):
         # Cria um alienígena e o posiciona na linha
-        alien = Alien(ai_settings, screen)
-        alien.x = alien_width + 2 * alien_width * alien_number
-        alien.rect.x = alien.x
-        aliens.add(alien)
+        create_alien(ai_settings, screen, aliens, alien_number)
+def get_number_aliens_x(ai_settings, alien_width):
+    """Determina o número de alienígenas que cabem em uma linha"""
+    available_space_x = ai_settings.screen_width - 2 * alien_width
+    number_aliens_x = int(available_space_x/ (2 * alien_width))
+    return number_aliens_x
+
+def create_alien(ai_settings, screen, aliens, alien_number):
+    # Cria um alienígena e o posiciona na linha
+    alien = Alien(ai_settings, screen)
+    alien_width = alien.rect.width
+    alien.x = alien_width + 2 * alien_width * alien_number
+    alien.rect.x = alien.x
+    aliens.add(alien)
