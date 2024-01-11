@@ -12,4 +12,6 @@ class Settings():
         self.bullets_allowed = 3
         #Configurações da espaçonave
         self.ship_speed_factor = 1.5
+        # Configurações dos alienígenas
+        self.alien_speed_factor = 1
         
