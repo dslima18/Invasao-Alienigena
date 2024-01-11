@@ -19,14 +19,9 @@ Ambientes Espaciais Deslumbrantes: Explore cenários espaciais deslumbrantes, de
 Como Jogar
 Clone o Repositório:
 
-<<<<<<< HEAD
-git clone https://github.com/seu-usuario/invasao-alienigena.git
-
-=======
 bash
 Copy code
 git clone https://github.com/seu-usuario/invasao-alienigena.git
->>>>>>> 8a7005098ec13ed2e86f7e3b781dff9b174904e1
 Abra o Jogo:
 Abra o diretório do projeto e inicie o jogo no seu ambiente de desenvolvimento favorito.
 
@@ -36,8 +31,4 @@ Use as teclas de controle da nave para navegar pelo espaço, atire nos invasores
 Contribuições e Feedback
 Contribuições são bem-vindas! Se você encontrar bugs, problemas ou tiver ideias para melhorar o jogo, sinta-se à vontade para abrir uma issue ou enviar um pull request. Este projeto, desenvolvido com base nas instruções do "Curso Intensivo de Python", está em constante desenvolvimento, e sua colaboração é fundamental para torná-lo ainda mais incrível.
 
-<<<<<<< HEAD
 Divirta-se explorando o espaço e defendendo a Terra contra a "Invasão Alienígena"!
-=======
-Divirta-se explorando o espaço e defendendo a Terra contra a "Invasão Alienígena"!
->>>>>>> 8a7005098ec13ed2e86f7e3b781dff9b174904e1
