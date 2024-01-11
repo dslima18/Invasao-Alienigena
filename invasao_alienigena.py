@@ -3,6 +3,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from alien import Alien
+from game_stats import GameStats
 import game_functions as gf
 from pygame.sprite import Group
 
@@ -14,6 +15,8 @@ def run_game():
     # Cria um alienígena
     #alien = Alien(ai_settings, screen)
     pygame.display.set_caption('Invasão Alienígena')
+    # Cria uma instância para armazzendas dados estatísticos do jogo
+    stats = GameStats(ai_settings)
     #Cria uma espaçonave
     ship =  Ship(ai_settings, screen)
     # Cria um grupo no qual serão armazenados os projéteis e um de alienígenas
@@ -26,6 +29,6 @@ def run_game():
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
-        gf.update_aliens(ai_settings, ship, aliens)
+        gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
         gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 run_game()

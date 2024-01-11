@@ -2,6 +2,7 @@ import sys
 import pygame
 from bullet import Bullet
 from alien import Alien
+from time import sleep
 
 def check_keydown_events(event,ai_settings, screen, ship, bullets):
     """Responde a pressionamentos de tecla."""
@@ -94,12 +95,12 @@ def get_number_rows(ai_settings, ship_height, alien_height):
     number_rows = int(available_space_y/ (2 * alien_height))
     return number_rows
 
-def update_aliens(ai_settings,ship, aliens):
+def update_aliens(ai_settings, stats, screen,ship, aliens, bullets):
     """Verifica se a frota está em uma das bordas e então atualiza as posições de todos os alienígenas da frota."""
     check_fleet_edges(ai_settings, aliens)
     # Verifica se houve colisões entre alienígenas e a espaçonave
     if pygame.sprite.spritecollideany(ship, aliens):
-        print("Ship hit!!!")
+        ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
     aliens.update()
 
 def check_fleet_edges(ai_settings, aliens):
@@ -122,3 +123,16 @@ def check_bullet_alien_collisions(ai_settings, screen, ship, aliens, bullets):
         # Destrói os projéteis existentes e cria uma nova frota
         bullets.empty()
         create_fleet(ai_settings, screen, ship, aliens)
+
+def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
+    """Responde ao fato de a espaçonave ter sido atingida por um alienígena."""
+    # Decrementa ships_left
+    stats.ships_left -= 1
+    # Esvazia a lista de alienígenas e de projéteis
+    aliens.empty()
+    bullets.empty()
+    # Cria uma nova frota e centraliza a espaçonave
+    create_fleet(ai_settings, screen, ship, aliens)
+    ship.center_ship()
+    # Faz uma pausa
+    sleep(0.5)
