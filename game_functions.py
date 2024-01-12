@@ -43,7 +43,6 @@ def update_screen(ai_settings, screen, stats, ship, aliens, bullets, play_button
     #Deixa a tela mais recente visível
     # Desenha o botão Play se o jogo estiver inativo
     if not stats.game_active:
-        print("Game is not active. Drawing button.")
         play_button.draw_button()
     
     pygame.display.flip()
