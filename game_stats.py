@@ -2,6 +2,8 @@ class GameStats():
     """Armazena dados estatísticos da Invasão Alienígena."""
     def __init__(self, ai_settings):
         """Inicializa os dados estatísticos."""
+        # A pontuação máxima jamais deverá ser reiniciada
+        self.high_score = 0
         self.ai_settings = ai_settings
         self.reset_stats()
         # Inicia a Invasão Alienígena em um estado inativo

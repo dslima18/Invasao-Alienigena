@@ -135,6 +135,7 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
         for aliens in collisions.values():
             stats.score += ai_settings.alien_points * len(aliens)
             sb.prep_score()
+            check_high_score(stats, sb)
     if len(aliens) == 0:
         # Destrói os projéteis existentes e cria uma nova frota
         bullets.empty()
@@ -185,3 +186,9 @@ def check_play_button(ai_settings, screen, stats, play_button, ship, aliens, bul
         # Cria uma nova frota e centraliza a espaçonave
         create_fleet(ai_settings, screen, ship, aliens)
         ship.center_ship()
+
+def check_high_score(stats, sb):
+    """Verifica se há uma nova pontuação máxima."""
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        sb.prep_high_score()
