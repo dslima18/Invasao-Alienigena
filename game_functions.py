@@ -107,14 +107,14 @@ def get_number_rows(ai_settings, ship_height, alien_height):
     number_rows = int(available_space_y/ (2 * alien_height))
     return number_rows
 
-def update_aliens(ai_settings, stats, screen,ship, aliens, bullets):
+def update_aliens(ai_settings, stats, screen, sb ,ship, aliens, bullets):
     """Verifica se a frota está em uma das bordas e então atualiza as posições de todos os alienígenas da frota."""
     check_fleet_edges(ai_settings, aliens)
     # Verifica se houve colisões entre alienígenas e a espaçonave
     if pygame.sprite.spritecollideany(ship, aliens):
-        ship_hit(ai_settings, stats, screen, ship, aliens, bullets)
+        ship_hit(ai_settings, stats, screen, sb, ship, aliens, bullets)
     aliens.update()
-    check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets)
+    check_aliens_bottom(ai_settings, stats, screen, sb, ship, aliens, bullets)
 
 def check_fleet_edges(ai_settings, aliens):
     """Responde apropriadamente se algum alienígena alcançou uma borda."""
@@ -146,11 +146,13 @@ def check_bullet_alien_collisions(ai_settings, screen, stats, sb, ship, aliens, 
         sb.prep_level()
         create_fleet(ai_settings, screen, ship, aliens)
 
-def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
+def ship_hit(ai_settings, stats, screen, sb, ship, aliens, bullets):
     """Responde ao fato de a espaçonave ter sido atingida por um alienígena."""
     if stats.ships_left > 0:
         # Decrementa ships_left
         stats.ships_left -= 1
+        # Atualiza o painel de pontuações
+        sb.prep_ships()
         # Esvazia a lista de alienígenas e de projéteis
         aliens.empty()
         bullets.empty()
@@ -164,13 +166,13 @@ def ship_hit(ai_settings, stats, screen, ship, aliens, bullets):
         pygame.mouse.set_visible(True)
     
 
-def check_aliens_bottom(ai_settings, stats, screen, ship, aliens, bullets):
+def check_aliens_bottom(ai_settings, stats, screen, sb, ship, aliens, bullets):
     """Verifica se algum alienígena alcançou a parte inferior da tela."""
     screen_rect = screen.get_rect()
     for alien in aliens.sprites():
         if alien.rect.bottom >= screen_rect.bottom:
             # Trata esse caso do mesmo modo que é feito quando a espaçonave é atingida
-            ship_hit(ai_settings, stats, screen,ship, aliens, bullets)
+            ship_hit(ai_settings, stats, screen, sb ,ship, aliens, bullets)
             break
 
 def check_play_button(ai_settings, screen, stats, sb, play_button, ship, aliens, bullets, mouse_x, mouse_y):
