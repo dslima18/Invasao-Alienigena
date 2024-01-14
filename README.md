@@ -1,6 +1,6 @@
 # Invasão Alienígena: Um Jogo Espacial Intenso
 
-Bem-vindo ao repositório do projeto "Invasão Alienígena"! Este é um emocionante jogo espacial inspirado nos clássicos "space shooters" que promete levar os jogadores a uma jornada intergaláctica repleta de ação, desafios e invasões alienígenas.
+Bem-vindo ao repositório do projeto "Invasão Alienígena"! Este é um emocionante jogo espacial inspirado nos clássicos "space invaders" que promete levar os jogadores a uma jornada intergaláctica repleta de ação, desafios e invasões alienígenas.
 
 ## Descrição do Jogo
 
